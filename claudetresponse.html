@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOMAC - Improve Your Skills Faster</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: #ffa366;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #fff;
+      }
+
+      .auth-buttons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btn {
+        padding: 0.5rem 1.5rem;
+        border: none;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: #333;
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: #555;
+        transform: translateY(-2px);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #ffa366, #ffb366);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 80px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .hero-text h1 .highlight {
+        background: #333;
+        color: #fff;
+        padding: 0.2rem 0.8rem;
+        border-radius: 15px;
+        display: inline-block;
+        transform: rotate(-2deg);
+      }
+
+      .hero-text p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #555;
+      }
+
+      .hero-illustration {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .character {
+        width: 200px;
+        height: 200px;
+        background: #4a90e2;
+        border-radius: 50%;
+        position: relative;
+        animation: bounce 2s ease-in-out infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .character::before {
+        content: "👨‍💻";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4rem;
+      }
+
+      .floating-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .floating-card {
+        position: absolute;
+        width: 80px;
+        height: 60px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: floatCard 4s ease-in-out infinite;
+      }
+
+      @keyframes floatCard {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-15px) rotate(5deg);
+        }
+      }
+
+      .floating-card:nth-child(1) {
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+      .floating-card:nth-child(2) {
+        top: 20%;
+        right: 10%;
+        animation-delay: 1s;
+      }
+      .floating-card:nth-child(3) {
+        bottom: 30%;
+        left: 20%;
+        animation-delay: 2s;
+      }
+      .floating-card:nth-child(4) {
+        bottom: 10%;
+        right: 20%;
+        animation-delay: 3s;
+      }
+
+      /* Stats Section */
+      .stats {
+        background: #f8f9fa;
+        padding: 3rem 0;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .stat-item h3 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-item p {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Features Section */
+      .features {
+        padding: 5rem 0;
+        background: #fff;
+      }
+
+      .features-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .features-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .features-text .highlight {
+        color: #ffa366;
+        font-style: italic;
+      }
+
+      .features-text p {
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      .features-illustration {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        position: relative;
+      }
+
+      .features-illustration::before {
+        content: "💻📚🎓";
+        font-size: 3rem;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      /* Special Features */
+      .special-features {
+        background: #333;
+        padding: 4rem 0;
+        color: #fff;
+      }
+
+      .special-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .special-text h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .special-text .highlight {
+        color: #ffa366;
+      }
+
+      .feature-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .feature-card {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        color: #333;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .feature-card p {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      /* Courses Section */
+      .courses {
+        padding: 5rem 0;
+        background: #f8f9fa;
+      }
+
+      .courses h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #333;
+      }
+
+      .courses h2 .highlight {
+        color: #ffa366;
+      }
+
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .course-card {
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .course-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .course-image {
+        height: 200px;
+        background: linear-gradient(45deg, #ffa366, #4a90e2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+      }
+
+      .course-content {
+        padding: 1.5rem;
+      }
+
+      .course-level {
+        background: #ffa366;
+        color: #fff;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
+
+      .course-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .course-description {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .course-btn {
+        background: #333;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .course-btn:hover {
+        background: #555;
+      }
+
+      /* Learning Section */
+      .learning {
+        padding: 5rem 0;
+        background: #fff;
+      }
+
+      .learning-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .learning-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .learning-text .highlight {
+        color: #ffa366;
+      }
+
+      .learning-features {
+        list-style: none;
+        margin-top: 2rem;
+      }
+
+      .learning-features li {
+        padding: 0.5rem 0;
+        padding-left: 2rem;
+        position: relative;
+      }
+
+      .learning-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #ffa366;
+        font-weight: bold;
+      }
+
+      .learning-illustration {
+        background: linear-gradient(135deg, #ffa366, #ffb366);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .learning-illustration::before {
+        content: "🎯📖🚀";
+        font-size: 4rem;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      /* CTA Section */
+      .cta {
+        background: linear-gradient(135deg, #ffa366, #ffb366);
+        padding: 4rem 0;
+        text-align: center;
+      }
+
+      .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .cta p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #555;
+      }
+
+      .cta .btn {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+      }
+
+      /* App Section */
+      .app {
+        padding: 5rem 0;
+        background: #f8f9fa;
+        text-align: center;
+      }
+
+      .app h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .app h2 .highlight {
+        color: #ffa366;
+      }
+
+      .app-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .app-btn {
+        background: #333;
+        color: #fff;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .app-btn:hover {
+        background: #555;
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      footer {
+        background: #333;
+        color: #fff;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 1rem;
+        color: #ffa366;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section ul li a:hover {
+        color: #ffa366;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #555;
+        color: #ccc;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-content,
+        .features-content,
+        .special-content,
+        .learning-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .stats-grid,
+        .course-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .feature-cards {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .stats-grid,
+        .course-grid,
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-text h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="container">
+        <div class="logo">⚫ MOMAC</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#course">Course</a></li>
+        </ul>
+        <div class="auth-buttons">
+          <a href="#login" class="btn">Log In</a>
+          <a href="#signup" class="btn btn-primary">Sign Up</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Improve your <span class="highlight">Skills</span> Faster</h1>
+            <p>
+              Speed Up The Skill Acquisition Process By Using A Structured
+              Course That Teaches You The Exact Skills You Need.
+            </p>
+            <a href="#courses" class="btn btn-primary">Enroll Now →</a>
+          </div>
+          <div class="hero-illustration">
+            <div class="character"></div>
+            <div class="floating-elements">
+              <div class="floating-card">📊</div>
+              <div class="floating-card">🎯</div>
+              <div class="floating-card">💡</div>
+              <div class="floating-card">🚀</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3>4.5</h3>
+            <p>Star Reviews</p>
+          </div>
+          <div class="stat-item">
+            <h3>30M</h3>
+            <p>Students</p>
+          </div>
+          <div class="stat-item">
+            <h3>2M+</h3>
+            <p>Courses</p>
+          </div>
+          <div class="stat-item">
+            <h3>1K+</h3>
+            <p>Expert Instructors</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="container">
+        <div class="features-content">
+          <div class="features-text">
+            <h2>
+              We Provide <span class="highlight">Smart</span> Online Education
+            </h2>
+            <p>
+              Our Courses Cover With Assigned Projects, Quizzes, And Tests Help
+              Students Demonstrate Their Knowledge And Learning. We Have Made It
+              Easier For Students To Learn From Anywhere.
+            </p>
+          </div>
+          <div class="features-illustration">
+            <p>Interactive Learning Experience</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Features -->
+    <section class="special-features">
+      <div class="container">
+        <div class="special-content">
+          <div class="special-text">
+            <h2>
+              Our <span class="highlight">Features</span><br />Special For you
+            </h2>
+            <a href="#features" class="btn btn-primary">See All Features →</a>
+          </div>
+          <div class="feature-cards">
+            <div class="feature-card">
+              <div class="feature-icon">🏆</div>
+              <h3>Get Certificate</h3>
+              <p>
+                After taking any Course Or Earning Any Certificate, You Can Opt
+                For Displaying It On Your Profile.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">👨‍🏫</div>
+              <h3>Amazing Instructor</h3>
+              <p>
+                Experience the Best Online Class Education With Our Skilled
+                Instructors For Your Growth.
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🎬</div>
+              <h3>Video Lesson</h3>
+              <p>
+                Find Professional instructors to Boost Your Growth with our
+                trained experts.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+      <div class="container">
+        <h2>Popular <span class="highlight">Courses</span></h2>
+        <div class="course-grid">
+          <div class="course-card">
+            <div class="course-image">📚</div>
+            <div class="course-content">
+              <span class="course-level">Beginner</span>
+              <h3 class="course-title">Learn English: Beginning Grammar</h3>
+              <p class="course-description">
+                Master the fundamentals of English grammar with our
+                comprehensive beginner course.
+              </p>
+              <button class="course-btn">View Course</button>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-image">🎨</div>
+            <div class="course-content">
+              <span class="course-level">Intermediate</span>
+              <h3 class="course-title">Learn English: Beginning Grammar</h3>
+              <p class="course-description">
+                Advance your English skills with intermediate grammar concepts
+                and practical exercises.
+              </p>
+              <button class="course-btn">View Course</button>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-image">💼</div>
+            <div class="course-content">
+              <span class="course-level">Advanced</span>
+              <h3 class="course-title">Learn English: Beginning Grammar</h3>
+              <p class="course-description">
+                Perfect your English grammar with advanced techniques and
+                professional applications.
+              </p>
+              <button class="course-btn">View Course</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Section -->
+    <section class="learning">
+      <div class="container">
+        <div class="learning-content">
+          <div class="learning-text">
+            <h2>Its easy to start <span class="highlight">Learning</span></h2>
+            <p>
+              Our Step-by-Step Approach Lets You Start Your Learning Journey
+              With Confidence. Choose A Course, Practice Lessons, And Start
+              Learning Today.
+            </p>
+            <ul class="learning-features">
+              <li>Create Account</li>
+              <li>Purchase Lessons</li>
+              <li>Start Learning</li>
+            </ul>
+          </div>
+          <div class="learning-illustration">
+            <p>Start Your Journey Today</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="container">
+        <h2>Get Ready to Started</h2>
+        <p>
+          Join thousands of students who have already transformed their skills
+          with our comprehensive courses.
+        </p>
+        <a href="#signup" class="btn btn-primary">Start Free Trial</a>
+      </div>
+    </section>
+
+    <!-- App Section -->
+    <section class="app">
+      <div class="container">
+        <h2>
+          Try Learning Free<br />on <span class="highlight">Mobile App</span>
+        </h2>
+        <div class="app-buttons">
+          <a href="#" class="app-btn">📱 Download for iOS</a>
+          <a href="#" class="app-btn">🤖 Download for Android</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>⚫ MOMAC</h3>
+            <p>
+              Leading the way in online education with innovative courses and
+              expert instructors.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Guides</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Product</h3>
+            <ul>
+              <li><a href="#">Courses</a></li>
+              <li><a href="#">Pricing</a></li>
+              <li><a href="#">Features</a></li>
+              <li><a href="#">API</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            &copy; 2024 MOMAC. All rights reserved. | Terms & Privacy Policy
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Add scroll effect to header
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.background = "rgba(255, 163, 102, 0.95)";
+          header.style.backdropFilter = "blur(10px)";
+        } else {
+          header.style.background = "#FFA366";
+          header.style.backdropFilter = "none";
+        }
+      });
+
+      // Animate stats on scroll
+      const observerOptions = {
+        threshold: 0.5,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const statItems = entry.target.querySelectorAll(".stat-item h3");
+            statItems.forEach((item, index) => {
+              const finalValue = item.textContent;
+              const isNumber = /^\d+/.test(finalValue);
+
+              if (isNumber) {
+                const value = parseInt(finalValue.replace(/\D/g, ""));
+                const suffix = finalValue.replace(/[\d.]/g, "");
+
+                let current = 0;
+                const increment = value / 50;
+                const timer = setInterval(() => {
+                  current += increment;
+                  if (current >= value) {
+                    current = value;
+                    clearInterval(timer);
+                  }
+                  item.textContent = Math.floor(current) + suffix;
+                }, 40);
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      const statsSection = document.querySelector(".stats");
+      if (statsSection) {
+        observer.observe(statsSection);
+      }
+
+      // Add hover effects to cards
+      document
+        .querySelectorAll(".course-card, .feature-card")
+        .forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-10px) scale(1.02)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0) scale(1)";
+          });
+        });
+    </script>
+  </body>
+</html>

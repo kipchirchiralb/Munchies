@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clevr SuperLattes</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #fffaf5;
+      }
+      header {
+        background-color: #fff;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      header nav a {
+        margin-left: 1.5rem;
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+      }
+      .hero {
+        background: #fdf7f1;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+      .hero img {
+        max-width: 100%;
+        height: auto;
+        margin-top: 2rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .hero p {
+        max-width: 600px;
+        margin: 0 auto 1.5rem;
+      }
+      .btn {
+        background-color: #8c6f56;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+      .features {
+        background-color: #fff;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+      .features h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+      }
+      .features p {
+        max-width: 700px;
+        margin: 0 auto 2rem;
+      }
+      .feature-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      .feature-item {
+        background-color: #fdf7f1;
+        padding: 1.5rem;
+        border-radius: 8px;
+        width: 200px;
+        text-align: center;
+      }
+      .feature-item img {
+        width: 60px;
+        margin-bottom: 1rem;
+      }
+      .caffeine {
+        background-color: #fce7d7;
+        padding: 3rem 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+      .caffeine img {
+        width: 250px;
+        border-radius: 8px;
+        margin-right: 2rem;
+      }
+      .caffeine-text {
+        max-width: 400px;
+      }
+      .caffeine-text h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .caffeine-text p {
+        font-size: 1rem;
+      }
+      @media (max-width: 768px) {
+        .caffeine {
+          flex-direction: column;
+          text-align: center;
+        }
+        .caffeine img {
+          margin: 0 0 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Clevr</h1>
+      <nav>
+        <a href="#">Shop</a>
+        <a href="#">Subscribe</a>
+        <a href="#">Story</a>
+        <a href="#">Reviews</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Sip smarter, feel better.</h1>
+      <p>
+        Custom SuperLattes that blend Adaptogens, Mushrooms & Probiotics into
+        creamy, satisfying drinks.
+      </p>
+      <a href="#" class="btn">Shop All Lattes</a>
+      <img
+        src="https://via.placeholder.com/800x400?text=Hero+Image"
+        alt="Latte display"
+      />
+    </section>
+
+    <section class="features">
+      <h2>We designed a better daily latte.</h2>
+      <p>
+        We took our coffee shop favorites, skipped the sugar and dairy, and
+        upgraded them with brain-boosting, mood-lifting ingredients.
+      </p>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <img
+            src="https://via.placeholder.com/60?text=☕"
+            alt="Creamy taste"
+          />
+          <p>Creamy Coffee Shop Taste</p>
+        </div>
+        <div class="feature-item">
+          <img src="https://via.placeholder.com/60?text=🌿" alt="Adaptogens" />
+          <p>Adaptogens for Stress</p>
+        </div>
+        <div class="feature-item">
+          <img src="https://via.placeholder.com/60?text=🍄" alt="Mushrooms" />
+          <p>Mushrooms for Mood</p>
+        </div>
+        <div class="feature-item">
+          <img src="https://via.placeholder.com/60?text=🦠" alt="Probiotics" />
+          <p>Probiotics for Immunity</p>
+        </div>
+      </div>
+      <br />
+      <a href="#" class="btn">Shop Now</a>
+    </section>
+
+    <section class="caffeine">
+      <img
+        src="https://via.placeholder.com/250x250?text=Happy+Customer"
+        alt="Happy woman"
+      />
+      <div class="caffeine-text">
+        <h3>Caffeine, without the crash</h3>
+        <p>
+          Our newest SuperLattes give you energy + focus, without the jitters or
+          crash. It’s coffee, with smooth science.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
